@@ -1,0 +1,6 @@
+CREATE TABLE `hrendel_site`.`category` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(32) NULL , UNIQUE (`id`) ) ENGINE = InnoDB;
+
+CREATE TABLE `hrendel_site`.`product` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(32) NOT NULL , `description` TEXT NULL , `category` INT NOT NULL , `price` INT NULL , UNIQUE (`id`) ) ENGINE = InnoDB;
+
+
+SELECT `name` FROM `category`
