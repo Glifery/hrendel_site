@@ -1,12 +1,6 @@
 <?php
-$username = "root";
-$password = "QAnnNzZyv0";
-$hostname = "localhost";
 
-//connection to the database
-$dbhandle = mysql_connect($hostname, $username, $password) or die("Unable to connect to MySQL");
-
-$selected = mysql_select_db('hrendel_site', $dbhandle);
+require 'init.php';
 
 $result = mysql_query('SELECT * FROM `category`');
 $categories = array();
@@ -22,21 +16,24 @@ while ($row = mysql_fetch_array($result)) {
 <!DOCTYPE html>
 <html>
     <head lang="en">
+        <?require 'bootstrap/inject.php';?>
         <meta charset="UTF-8">
-        <title>Заголовок</title>
+        <title><?=$brand?> | Главная страница</title>
     </head>
     <body>
-        <div>
-            <h1>Крутой магаз!</h1>
+        <div class="container">
+            <?require 'bootstrap/navbar.php';?>
+            <ol class="breadcrumb">
+                <li class="active"><?= $mainpage;?></li>
+            </ol>
+            <ul class="list-group">
+                <?php
+                foreach ($categories as $id => $name) {
+                    echo '<li class="list-group-item"><a href="/category.php?id=' . $id . '">' . $name . '</a></li>';
+                }
+                ?>
+            </ul>
         </div>
-        <p>Категории:</p>
-        <ul>
-            <?php
-            foreach ($categories as $id => $name) {
-                echo '<li><a href="/' . $id . '">' . $name . '</a></li>';
-            }
-            ?>
-        </ul>
     </body>
 </html>
 
