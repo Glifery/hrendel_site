@@ -1,6 +1,6 @@
 <?php
 
-$brand = 'Хрендель-сайт';
+$brand = 'Медиамаг';
 $mainpage = 'Главная';
 
 require 'connect.php';
