@@ -27,6 +27,7 @@ $category = mysql_fetch_array($category, MYSQL_ASSOC);
             </ol>
             <div class="jumbotron">
                 <h2>Товар: <?=$product['name']?></h2>
+                <img class="thumbnail" src="<?=$product['picture']?>" alt="<?=$product['name']?>">
                 <p><b>Описание:</b> <?=$product['description']?></p>
                 <p><b>Цена:</b> <?=$product['price']?></p>
                 <p><a class="btn btn-primary btn-lg" href="#" role="button">Купить</a></p>
