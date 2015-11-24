@@ -4,7 +4,7 @@ require 'init.php';
 
 $result = mysql_query('SELECT * FROM `category`');
 $categories = array();
-while ($row = mysql_fetch_array($result)) {
+while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
     $categories[$row['id']] = $row['name'];
 }
 

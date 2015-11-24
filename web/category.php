@@ -7,8 +7,8 @@ $category = mysql_fetch_array($category, MYSQL_ASSOC);
 
 $productsRes = mysql_query('SELECT * FROM `product` WHERE `category` = ' . $_REQUEST['id']);
 $products = array();
-while ($product = mysql_fetch_array($productsRes, MYSQL_ASSOC)) {
-    $products[] = $product;
+while ($prd = mysql_fetch_array($productsRes, MYSQL_ASSOC)) {
+    $products[] = $prd;
 }
 
 
@@ -18,25 +18,25 @@ while ($product = mysql_fetch_array($productsRes, MYSQL_ASSOC)) {
 <!DOCTYPE html>
 <html>
     <head lang="en">
-        <?require 'bootstrap/inject.php';?>
+        <? require 'bootstrap/inject.php';?>
         <meta charset="UTF-8">
         <title><?=$brand?> | Категория</title>
     </head>
     <body>
         <div class="container">
-            <?require 'bootstrap/navbar.php';?>
+            <? require 'bootstrap/navbar.php';?>
             <ol class="breadcrumb">
                 <li><a href="/"><?=$mainpage?></a></li>
                 <li class="active"><?= $category['name'];?></li>
             </ol>
             <ul class="list-group">
-                <?foreach ($products as $product) {?>
+                <?foreach ($products as $index => $prd):?>
                     <li class="list-group-item">
                         <p>
-                            <a href="/card.php?product=<?=$product['id']?>"><?=$product['name']?></a>
+                            <a href="/card.php?product=<?=$products[$index]['id']?>"><?=$products[$index]['name']?></a>
                         </p>
                     </li>
-                <?}?>
+                <? endforeach ?>
             </ul>
         </div>
     </body>

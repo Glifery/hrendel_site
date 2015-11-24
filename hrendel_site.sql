@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.9
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Окт 12 2015 г., 23:09
--- Версия сервера: 5.6.23-log
--- Версия PHP: 5.5.21
+-- Время создания: Ноя 24 2015 г., 20:20
+-- Версия сервера: 5.5.46-0ubuntu0.14.04.2
+-- Версия PHP: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,9 +27,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(32) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `category`
@@ -47,55 +48,27 @@ INSERT INTO `category` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `description` text,
   `category` int(11) NOT NULL,
-  `price` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `price` int(11) DEFAULT NULL,
+  `picture` varchar(255) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `description`, `category`, `price`) VALUES
-(1, 'A4TECH X7-R4', 'Качественная беспроводная мышь с высокочувствительным сенсором Vtrack и диапазоном 100-3000 dpi', 5, 590000),
-(2, 'Cobra E-Blue Junior', 'Проводная оптическая многокнопочная мышь, чувствительность сенсора до 1600 dpi, с голубой подсветкой', 5, 350000),
-(3, 'Silicon Power Blaze B05', '32 gb USB 3.0', 6, 450000),
-(4, 'Darth Vader', '8 gb USB 2.0 Фигурка Дарта Вейдера с оттягивающейся головой', 6, 250000),
-(5, 'Panasonic Ergofit HJE-125', 'Вакуумные наушники с диапазоном частот от 10 до 24 kHz.  Громкость 97 децибелл', 7, 250000),
-(6, 'Monster Beats Solo S450', 'Головные Bluetooth стерео наушники с встроенным мп3 плеером и микрофоном.', 7, 650000);
+INSERT INTO `product` (`id`, `name`, `description`, `category`, `price`, `picture`) VALUES
+(1, 'A4TECH X7-R4', 'A4Tech R4 – беспроводная игровая мышь, обладающая усиленным оптическим сенсором повышенной точности. Использование такого решения позволило обеспечить высокий уровень позиционирования практически на любой поверхности. A4Tech R4 характеризуют отсутствие высоких задержек даже в динамичных шутерах и низкий отклик клавиш. Благодаря этому вы сможете моментально реагировать на события в игре. Мышь поддерживает динамичное изменение разрешения сенсора, для этого на корпусе предусмотрена специальная кнопка. A4Tech R4 обладает встроенной памятью, а это значит, что вы сможете запрограммировать мышку под вашу модель использования и использовать эти настройки на любом другом компьютере без дополнительной подстройки.', 5, 590000, 'http://tanscomputer.com/image/cache/data/mouse/mouse-a4tech-x7-r4-wireless-macro-peripheral--2576-550x582.jpg'),
+(2, 'Cobra E-Blue Junior', 'E-blue Cobra Junior - игровая проводная мышь со светодиодной подсветкой голубого цвета. Корпус выполнен из черного пластика. Эргономичный дизайн с высокой производительностью и оптическим датчиком обеспечивает превосходную точность и контроль. За счет трех режимов оптического разрешения (400/800/1600 dpi) вы можете легко адаптировать мышь под свои притязания. Симметричная форма позволит работать с ней как в правой, так и левой руке.', 5, 350000, 'http://www.spark.ua/web/media/items/images/29/19879-23634-my-sh-igrovaya-opticheskaya-e-blue-cobra-junior-1600dpi-usb-red-wave-sensor-black.jpg'),
+(3, 'Silicon Power Blaze B05', '32 gb, USB 3.0. Blaze B05 также оснащен LED индикатором, по которому пользователи могут легко отследить текущий статус передачи данных. Инновационный дизайн выдвижного USB коннектора позволяет пользователям легко и быстро получить доступ к файлам и документам. Blaze B05 отличается современным и стильным дизайном и доступен в трех цветовых решениях: классический черный, морской синий и ярко-розовый. Благодаря интерфейсу USB 3.0 пропускная способность накопителя - 5Gb/s в 10 раз превышает пропускную способность интерфейса USB 2.0. Это позволяет сэкономить время при копировании большого объема данных с и на накопитель.', 6, 450000, 'http://www.overclockers.ua/news/storage/113253-Silicon-Power_USB_Blaze_B05.jpg'),
+(4, 'Darth Vader', '8 gb USB 2.0 Фигурка Дарта Вейдера с оттягивающейся головой. Оболочка сделана из качественного мягкого силикона. Ее цвет не потускнеет, не сотрется. Флешка закрывается очень плотно, так что вы спокойно можете носить ее в сумке или повесить на ключи.', 6, 250000, 'http://ecx.images-amazon.com/images/I/61OFexTcFkL._SY355_.jpg'),
+(5, 'Panasonic Ergofit HJE-125', 'Поклонникам стильных и функциональных аксессуаров по разумной цене Panasonic представила модель продвинутых наушников-вкладышей Panasonic RP-HJE125. Данный продукт выполнен в эргономичном дизайне Ergofit, что обеспечивает комфорт при длительном прослушивании музыки, доступен в нескольких цветовых вариантах, поставляется со сменными силиконовыми насадками 3 разных размеров (S/M/L). Звучание Panasonic RP-HJE125 достаточно четкое и выразительное, во всем заявленном диапазоне частот не наблюдаются искажения и шумы. Реализуется это благодаря качественным динамикам OctaRib с неодимовыми магнитами. Длина кабеля новинки составляет 1,1 метра, тип разъема – mini-jack 3,5 мм.', 7, 250000, 'http://images.esellerpro.com/2271/I/236/73/red1.jpg'),
+(6, 'Monster Beats Solo S450', 'Головные Bluetooth стерео наушники с встроенным мп3 плеером и микрофоном. Monster Beats Solo HD S450 позволят слушать музыку компактно. Просто запишите на карту памяти microSD, объемом до 16Gb, всю Вашу любимую музыку и вставьте ее в картридер, который находиться на корпусе наушников – теперь Вам не будут мешать шнуры. Monster Beats Solo HD S450 имеют качественный звук, который воспроизводиться с частотой от 24-24800 Гц. Наушники работают от встроенной батареи, которая заряжается от USB порта и которой хватает до 7 часов беспрерывного прослушивания музыки.', 7, 650000, 'http://www.honsoncn.com/pic/201406/21114458.jpg');
 
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `category`
---
-ALTER TABLE `category`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Индексы таблицы `product`
---
-ALTER TABLE `product`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `category`
---
-ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT для таблицы `product`
---
-ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
